@@ -4,13 +4,13 @@ include './lib/BaseReceiver.php';
 $config = [
     'gateway' => 'imap-mail.outlook.com',
     'port' => '993',
-    'account' => 'jingskjc@outlook.com',
+    'account' => 'abc@outlook.com',
     'password' => 'snh87BUJH',
     'proxy' => [
-        'host' => '140.143.153.29',
-        'port' => '34502',
-        'username' => 'rondaful',
-        'password' => 'wuchuwei'
+        'host' => '172.20.0.241',
+        'port' => '3502',
+        'username' => 'abc',
+        'password' => '123'
     ],
 //    'mailbox' => 'Sent'
 ];
