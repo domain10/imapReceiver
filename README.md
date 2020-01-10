@@ -4,7 +4,7 @@ PHP 通过Socks5的代理方式收发邮件
 ## 安装
 
 ~~~
-git clone https://github.com/domain10/socks5-imap
+git clone https://github.com/domain10/socks5-email
 ~~~
 
 
