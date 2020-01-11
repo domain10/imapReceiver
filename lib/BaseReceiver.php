@@ -114,7 +114,7 @@ class BaseReceiver
         $this->connect($params, $connectTimeout);
     }
     
-    public static function getInstance(array $params, int $connectTimeout = 30, int $timeout = 28800)
+    public static function getInstance(array $params, int $connectTimeout = 30, int $timeout = 30)
     {
         if (empty($params['gateway']) || empty($params['account']) || empty($params['password'])) {
             throw new \Exception('missing parameters');
@@ -306,13 +306,13 @@ class BaseReceiver
      * @param string $isuid
      * @return string
      */
-    public function fetchHeader(int $mailid, $isuid = true): string
+    public function fetchHeader(int $mailid, bool $isuid = true): string
     {
         $res = $this->fetch($mailid, ['RFC822.HEADER'], $isuid);
         return $res[0]['RFC822.HEADER'] ?? '';
     }
     
-    public function fetchStructure(int $mailid, $isuid = true)
+    public function fetchStructure(int $mailid, bool $isuid = true)
     {
         $res = $this->fetch($mailid, ['BODYSTRUCTURE'], $isuid);
         return $this->genStructure($res[0]['BODYSTRUCTURE'] ?? []);
@@ -324,7 +324,7 @@ class BaseReceiver
      * @param $partNum
      * @param $isuid
      */
-    public function fetchBody(int $mailid, $partNum, $isuid = true): string
+    public function fetchBody(int $mailid, $partNum, $isuid = true)
     {
         if ($partNum) {
             $field = 'BODY';
@@ -469,7 +469,7 @@ class BaseReceiver
         return $obj;
     }
     
-    protected function errorHandler($errNo, $errStr, $errFile = '', $errLine = 0)
+    public function errorHandler($errNo, $errStr, $errFile = '', $errLine = 0)
     {
         if (stripos($errStr, 'resource is not a valid stream') !== false) {
             throw new \Exception($errStr, 404);
